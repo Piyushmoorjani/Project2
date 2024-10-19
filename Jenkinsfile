@@ -22,7 +22,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Pull the code from the repository
-                git branch: 'main', url: 'https://github.com/Piyushmoorjani/Project2.git'
+                git branch: 'master', url: 'https://github.com/Piyushmoorjani/Project2.git'
             }
         }
 
