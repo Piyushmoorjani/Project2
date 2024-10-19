@@ -1,22 +1,22 @@
 pipeline {
     agent any
 
+    environment {
+        // Define imageName in the environment
+        imageName = image1
+    }
+
     stages {
-        stage('Clone Repository') {
+        stage('Pull Code') {
             steps {
-                // Pull the code from the repository
-                git branch: 'master', url: 'https://github.com/Piyushmoorjani/Project2.git'
+                git branch: 'main', url: 'https://github.com/Piyushmoorjani/Project2.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    def imageName = 'image1' // Name of the Docker image
-                    def dockerfilePath = './Dockerfile' // Path to the Dockerfile
-                    
-                    // Build the Docker image
-                    sh "docker build -t ${imageName} -f ${dockerfilePath} ."
+                    sh "docker build -t ${imageName} ."
                 }
             }
         }
@@ -24,13 +24,9 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    def containerName = 'Container1' // Name of the Docker container
-                    // Run the Docker container
-                    sh "docker run -d -p 8000:80 --name ${containerName} ${imageName}"
+                    sh "docker run -d -p 8000:80 ${imageName}"
                 }
             }
         }
     }
 }
-
-    
