@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        // Define imageName in the environment
-        imageName = image1
+        imageName = 'image1'
     }
 
     stages {
         stage('Pull Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Piyushmoorjani/Project2.git'
+                git branch: 'master', url: 'https://github.com/Piyushmoorjani/Project2.git'
             }
         }
 
