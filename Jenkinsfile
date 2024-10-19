@@ -45,16 +45,4 @@ pipeline {
                 }
             }
         }
-    }
-
-    post {
-        always {
-            // Cleanup: Stop and remove the container if it exists
-            script {
-                sh 'docker rm -f Container1 || true'
-                sh 'docker rmi image1 || true'
-            }
-        }
-    }
-}
-
+   }
