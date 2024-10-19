@@ -1,13 +1,11 @@
-# Use the official Nginx image as a base
 FROM nginx:latest
 
-# Copy HTML files to the Nginx server directory
+
 COPY ./html /usr/share/nginx/html
 
-# Expose port 8000
+
 EXPOSE 8000
 
-# Command to run Nginx
 CMD ["nginx", "-g", "daemon off;"]
 
 
